@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+/* ============================================================
+ * Memories landing page tokens.
+ *
+ * Palette: cool paper + ink, ONE accent (the brand's deep sky
+ * blue). Warmth on the page comes only from the photography.
+ * Radius system: cards 20px, inputs 12px, buttons pill.
+ * Type: Bricolage Grotesque (display), Figtree (body).
+ * ============================================================ */
+@import "@fontsource-variable/bricolage-grotesque";
+@import "@fontsource-variable/figtree";
+
+:root {
+  --paper: #f7f9fb;
+  --ink: #171a20;
+  --muted: #59616e;
+  --accent: #1f7ab8;
+  --accent-deep: #16608f;
+  --line: rgba(23, 26, 32, 0.09);
+  --card: #ffffff;
+}
+
+.site {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Figtree Variable", system-ui, sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.site ::selection {
+  background: rgba(31, 122, 184, 0.18);
+}
+
+.font-display {
+  font-family: "Bricolage Grotesque Variable", "Figtree Variable", system-ui, sans-serif;
+}
+
+.site section {
+  scroll-margin-top: 84px;
+}
+
+/* The interactive "remembering" lens: a blurred, drained cover whose mask
+ * opens a soft window of clarity under the pointer. */
+.lens-cover {
+  filter: blur(16px) grayscale(0.92) brightness(1.02);
+  transform: scale(1.05);
+  -webkit-mask-image: radial-gradient(
+    circle 240px at var(--mx, 50%) var(--my, 55%),
+    transparent 0 130px,
+    black 240px
+  );
+  mask-image: radial-gradient(
+    circle 240px at var(--mx, 50%) var(--my, 55%),
+    transparent 0 130px,
+    black 240px
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lens-cover {
+    display: none; /* static clarity instead of an interactive effect */
+  }
+}
